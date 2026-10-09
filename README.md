@@ -1,4 +1,4 @@
-# Cookchain public node â€” 2026.10.03.1
+# Cookchain RPC node — 2026.10.09.1
 
 This installs a new non-validator Besu node for Cookchain Mainnet (chain ID 20261001, native COOK, 18 decimals). It downloads and independently verifies the existing chain. It does not create a new network or confer validator status.
 

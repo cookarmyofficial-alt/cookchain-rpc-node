@@ -6,7 +6,7 @@
   "releaseStatus": "prerelease",
   "files": {
     ".gitignore": "c7d0b3ed4965b54b7c7fe6c1af83bc850d509469b9cecbba16561493d2cc1b9e",
-    "README.md": "ee623d9fe7ed99d0ef8e13e9b93211a0effc05d628a02b951b04d96225bb28ce",
+    "README.md": "87ad9d6e2b6f307d182099e035c006d05ca7d6d811a43f56fe7c8af3026bb20d",
     "check.py": "904e1de5f5f3b3be67360105f7b04e5461c060dbcffd45b06ad52bd4a87ff191",
     "compose.template.yaml": "0ec9401e5e6179a16fa42d3fed33bda886292a50c509491c7a426fddc7d4fb0b",
     "config/genesis.json": "37856941fd03fdd98d03a0cdaeb7e0ccb98277bcef10d5866eb7840f0a16d1eb",
