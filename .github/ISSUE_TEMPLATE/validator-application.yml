@@ -1,0 +1,38 @@
+name: Validator application
+description: Apply to operate a Cookchain validator; governance approval and on-chain admission are required.
+title: "[Validator application] "
+body:
+  - type: markdown
+    attributes:
+      value: "This issue is public. Share only public identity and operational details. Never upload data/key, credentials, backups or private logs. Installation does not grant validator status."
+  - type: input
+    id: contact
+    attributes:
+      label: Operator and public contact
+      description: GitHub handle or public business contact.
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Public candidate-report.json
+      description: Paste the output of check.py. The enode contains your public IP.
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: operation
+    attributes:
+      label: Hosting and operations
+      description: CPU/RAM/storage, hosting region/provider, connectivity, monitoring, clock sync, incident response and upgrade availability. No credentials.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Operator acknowledgement
+      options:
+        - label: I control the candidate identity, keep its key private, and will not run duplicate identities.
+          required: true
+        - label: I understand governance approval and confirmed on-chain admission are required, and this package makes no reward or staking guarantee.
+          required: true

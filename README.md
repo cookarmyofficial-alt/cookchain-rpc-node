@@ -45,3 +45,7 @@ curl https://rpc.cookscan.net/evm -H 'Content-Type: application/json' --data '{"
 ```
 
 Only public configuration, installation tools and patch references are distributed. Node identities are generated locally. The package contains no validator keys, wallets or production databases.
+
+## Validator candidates
+
+A separate controlled-admission validator package and operator guide are available in [validators/](validators/README.md). Installing it does not grant validator status. Download the validator ZIP and checksum from the [release page](https://github.com/cookarmyofficial-alt/cookchain-rpc-node/releases/tag/v2026.10.09.1). Apply through the validator application issue template after technical preflight.
