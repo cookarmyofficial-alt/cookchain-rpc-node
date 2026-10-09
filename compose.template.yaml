@@ -1,0 +1,40 @@
+name: cookchain-public-node
+services:
+  node:
+    image: hyperledger/besu:26.9.0@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0
+    user: "__USER__"
+    restart: unless-stopped
+    environment:
+      JAVA_OPTS: "-Xms512m -Xmx2g"
+    volumes:
+      - ./config/genesis.json:/config/genesis.json:ro
+      - ./patch/besu-ethereum-api-26.9.0.ws-counter-fix-v2.jar:/opt/besu/lib/besu-ethereum-api-26.9.0.jar:ro
+      - ./data:/data
+    command:
+      - --data-path=/data
+      - --genesis-file=/config/genesis.json
+      - --sync-mode=FULL
+      - --sync-min-peers=1
+      - --discovery-enabled=true
+      - --nat-method=NONE
+      - --p2p-host=__PUBLIC_IP__
+      - --p2p-port=30303
+      - --max-peers=80
+      - --rpc-http-enabled=true
+      - --rpc-http-host=0.0.0.0
+      - --rpc-http-api=ETH,NET,WEB3
+      - --rpc-http-cors-origins=*
+      - --host-allowlist=localhost,127.0.0.1,node
+      - --rpc-ws-enabled=true
+      - --rpc-ws-host=0.0.0.0
+      - --rpc-ws-port=8546
+      - --rpc-ws-api=ETH,NET,WEB3
+      - --rpc-ws-max-active-connections=200
+      - --min-gas-price=10000
+      - --api-gas-price-blocks=1
+      - --api-gas-price-percentile=0
+    ports:
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+      - "127.0.0.1:8545:8545"
+      - "127.0.0.1:8546:8546"

@@ -1,0 +1,27 @@
+# Example locations for YOUR RPC hostname, using a TLS-enabled nginx server.
+# Add them to the existing server configuration; do not overwrite website settings.
+location = /evm {
+    client_max_body_size 256k;
+    add_header Access-Control-Allow-Origin "*" always;
+    add_header Access-Control-Allow-Methods "POST, OPTIONS" always;
+    add_header Access-Control-Allow-Headers "Content-Type" always;
+    if ($request_method = OPTIONS) { return 204; }
+    rewrite ^ / break;
+    proxy_pass http://127.0.0.1:8545;
+    proxy_set_header Host localhost;
+    proxy_set_header Origin "";
+    proxy_hide_header Access-Control-Allow-Origin;
+    proxy_hide_header Access-Control-Allow-Methods;
+    proxy_hide_header Access-Control-Allow-Headers;
+    proxy_read_timeout 60s;
+}
+location = /ws {
+    proxy_pass http://127.0.0.1:8546/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host localhost;
+    proxy_set_header Origin "";
+    proxy_read_timeout 3600s;
+    proxy_buffering off;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Cookchain",
+  "chainId": 20261001,
+  "chainIdHex": "0x1352889",
+  "nativeCurrency": {
+    "name": "COOK",
+    "symbol": "COOK",
+    "decimals": 18
+  },
+  "rpcUrls": [
+    "https://rpc.cookscan.net/evm"
+  ],
+  "blockExplorerUrls": [
+    "https://cookscan.net/"
+  ]
+}

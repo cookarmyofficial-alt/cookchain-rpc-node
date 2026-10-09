@@ -1,0 +1,17 @@
+{
+  "baseImage": "hyperledger/besu:26.9.0@sha256:fc1813d67d630d7660eea6ee555c01e73bfecda3e54d24f9484c1c4a52c6fcb0",
+  "revision": "v2",
+  "jarName": "besu-ethereum-api-26.9.0.ws-counter-fix-v2.jar",
+  "changedEntries": [
+    "org/hyperledger/besu/ethereum/api/jsonrpc/JsonRpcHttpService$1.class",
+    "org/hyperledger/besu/ethereum/api/jsonrpc/JsonRpcHttpService.class",
+    "org/hyperledger/besu/ethereum/api/jsonrpc/websocket/WebSocketService.class"
+  ],
+  "originalJarSHA256": "d8cf25fc443505f2f4e16186ca3d1d6ae8c2772c7aa522dc79dc40c5aac85fa2",
+  "compatibleBaseJarSHA256": [
+    "d8cf25fc443505f2f4e16186ca3d1d6ae8c2772c7aa522dc79dc40c5aac85fa2",
+    "442e2ae6c01be32c01fb6a166ec1a14e6c1fb9bb85c7ecf3330342a7b2643a61"
+  ],
+  "patchedJarSHA256": "d6d49ba965cf40770a93ddff853db4058bee5813fd0ab608b08347c6bc444039",
+  "status": "Local tested patch, not an official Besu release"
+}

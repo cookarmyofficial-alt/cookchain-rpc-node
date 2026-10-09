@@ -1,0 +1,7 @@
+data/
+compose.yaml
+.env
+*.pem
+*.key
+__pycache__/
+*.zip

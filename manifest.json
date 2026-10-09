@@ -1,0 +1,27 @@
+{
+  "version": "2026.10.09.1",
+  "chainId": 20261001,
+  "genesisHash": "0xcf5b9cb3565f307806ee9f9e7652e405827b20655621ab284c0e80afea85a397",
+  "publicPeerOpening": "not-reconfirmed",
+  "releaseStatus": "prerelease",
+  "files": {
+    ".gitignore": "c7d0b3ed4965b54b7c7fe6c1af83bc850d509469b9cecbba16561493d2cc1b9e",
+    "README.md": "ee623d9fe7ed99d0ef8e13e9b93211a0effc05d628a02b951b04d96225bb28ce",
+    "check.py": "904e1de5f5f3b3be67360105f7b04e5461c060dbcffd45b06ad52bd4a87ff191",
+    "compose.template.yaml": "0ec9401e5e6179a16fa42d3fed33bda886292a50c509491c7a426fddc7d4fb0b",
+    "config/genesis.json": "37856941fd03fdd98d03a0cdaeb7e0ccb98277bcef10d5866eb7840f0a16d1eb",
+    "config/static-nodes.json": "be90eb40f9cd0808e8d5e85ef625b8a4fd00783748765751f0945bcd8039208c",
+    "install.py": "9dd17f0b482ba068f8b7c0a6111f50b322bd1e97c3410acf33f4c6a8aa27aca0",
+    "network.json": "be6845802e335d0b997e57e79fe6c9d8d6c92c704fe676a2550674a61b466af1",
+    "nginx-rpc.conf.example": "9c460f9735e1f4f55e8537cfe737ce18a04ddddd9928704bb9d43690269a3643",
+    "patch/HttpLifecycleTest.java": "25c70f527e30741593862a0ba17de54b6a8a29f20dd3f95b354f4a3f5c297265",
+    "patch/JsonRpcHttpService.java": "daedd3f68e8d36104ba31cbfb7d1ad164c7d3577301ad906f0a1a6096dc54dde",
+    "patch/JsonRpcHttpService.original.java": "428670fe289e458e2582155decbd8b1567df2cba0eaaf7b6e8dcde451676ea76",
+    "patch/LifecycleTest.java": "6c49a63a78ff9939b21865c88ab0de89c48cfea192a9cb29076cc54d7dceed87",
+    "patch/README.md": "677a6e85a72764e4c4a3263ba3dad489534024ec91b903dbd91f721c2b79b148",
+    "patch/WebSocketService.java": "0362cef8d04442d75ece7f451f380c533b9fb19e6ec17b1c0b22741b2985f089",
+    "patch/WebSocketService.original.java": "57f4566088e9b1c30f71c001515ae42304a7e445d0e8ce657f270784d81ed643",
+    "patch/besu-ethereum-api-26.9.0.ws-counter-fix-v2.jar": "d6d49ba965cf40770a93ddff853db4058bee5813fd0ab608b08347c6bc444039",
+    "patch/build.py": "5b5c2cca91726356a4a58cdb5e7c99bf1a218071962bfae4fa424fe2bfdd0fb5"
+  }
+}

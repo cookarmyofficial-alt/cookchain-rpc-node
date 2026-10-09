@@ -1,0 +1,17 @@
+# Cookchain WebSocket counter correction — 2026-10-03
+
+Besu 26.9.0 retains connection slots after WebSocket upgrades disconnect under Vert.x 5. Once the configured limit is reached, its rejection path also increments the count. The failure was reproduced with the original packaged class; a test expected zero open connections and observed one after disconnect.
+
+Upstream issue: https://github.com/besu-eth/besu/issues/11225
+Upstream proposed rejection-accounting fix: https://github.com/besu-eth/besu/pull/11241
+At installation, this PR was open and unmerged, and the latest official release was 26.9.0. This is a local correction, not an official Besu release.
+
+The final v2 patch preserves the connection limits, reserves slots atomically, does not count rejected connections, and releases each accepted slot exactly once. It additionally listens to the underlying Netty channel's close future so slot release does not depend exclusively on Vert.x callbacks. WebSocket close also releases its slot. The original authentication, host allowlist, message handling, subscription cleanup, and consensus code are unchanged. WebSocketService.class, JsonRpcHttpService.class and its compiler-generated enum helper differ in the API JAR; package.py verifies every other entry is identical.
+
+Tests run inside disposable containers without production data, keys, or network access beyond container loopback. The identical WebSocket test reproduces the original fault and passes with the patch: repeated upgrade/close, connection-cap rejection, abrupt disconnect, and availability after capacity is released. HTTP tests cover normal closes, abortive resets during 1 MiB responses and rejected connections; the simple HTTP test passes with both the original and patched handler, so it does not reproduce the production HTTP problem. On Cookscan, production evidence showed 80 reported HTTP slots with only three established TCP connections and failed requests. The first WebSocket-only installation automatically rolled back after HTTP validation failed. The v2 installation then passed under the ongoing load. Production verification separately exercises 25 connect/RPC/disconnect cycles, newHeads events for two advancing blocks, logs subscription, unsubscription, chain ID, synchronization, and peers.
+
+Servers: Cookdex, LDBL, Zeven, and Cookscan. Install one validator at a time, only after the preceding instance has resumed consensus participation. Cookscan also has a separate HTTP-only gateway.
+
+Installation preserves the original Docker image and adds a read-only bind mount for the patched JAR. Genesis, database, keys, and gas configuration are unchanged. The manifest records original and patched JAR SHA-256 hashes. Backups under each project's backups/ws-counter-fix-20261003-SERVICE-v2 include the previous compose.yaml (or gateway rpc-peering.yaml) and original JAR. Installation automatically restores that compose file and recreates the same service if validation fails.
+
+To roll back a service, restore its saved compose.yaml, then run `docker compose up -d --no-deps SERVICE` in that project. For the Cookscan gateway, restore its saved rpc-peering.yaml and use `docker compose -f compose.yaml -f rpc-peering.yaml up -d --no-deps gateway`. The first three hosts' v2 backups restore the initial WebSocket-only fix; their earlier backups restore the unpatched image. Never restart validators simultaneously. Replace this local bind mount with a verified official release containing the full lifecycle correction when available.
